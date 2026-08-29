@@ -1,0 +1,72 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: "Papirology";
+  src: url("/__l5e/assets-v1/99534458-2d1e-4d1d-bdea-856afbdee73f/papirology.ttf") format("truetype");
+  font-weight: 400;
+  font-display: swap;
+}
+
+:root {
+  --ink: oklch(18.7% 0.003 67.7);
+  --ink-soft: oklch(34.5% 0.005 91.5);
+  --ink-muted: oklch(64.4% 0.006 84.6);
+  --footer: oklch(83.3% 0.003 84.6);
+  --brand-yellow: oklch(82.9% 0.159 90);
+  --brand-red: oklch(61.5% 0.226 29);
+  --brand-blue: oklch(56.8% 0.154 255.9);
+  --brand-blue-soft: oklch(56.8% 0.154 255.9);
+  --brand-red-soft: oklch(61.5% 0.226 29);
+  --cream: oklch(83.3% 0.003 84.6);
+  --cream-muted: oklch(28.8% 0.004 106.6);
+  --cream-line: oklch(72.9% 0.003 84.6);
+  --stone: oklch(83.3% 0.003 84.6);
+  --stone-line: oklch(72.9% 0.003 84.6);
+  --stone-ink: oklch(28.8% 0.004 106.6);
+  --soft: oklch(91.9% 0.006 84.6);
+  --soft-dim: oklch(88.7% 0.008 73.7);
+  --paper: oklch(95.6% 0.01 87.5);
+  --paper-foreground: oklch(21.7% 0.004 106.7);
+}
+
+@theme {
+  --font-sans: "Figtree", ui-sans-serif, system-ui, sans-serif;
+  --font-numeric: "Papirology", "Figtree", ui-sans-serif, sans-serif;
+
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-ink-muted: var(--ink-muted);
+  --color-stone: var(--stone);
+  --color-stone-line: var(--stone-line);
+  --color-stone-ink: var(--stone-ink);
+  --color-brand-yellow: var(--brand-yellow);
+  --color-brand-red: var(--brand-red);
+  --color-brand-blue: var(--brand-blue);
+  --color-soft: var(--soft);
+  --color-soft-dim: var(--soft-dim);
+  --color-paper: var(--paper);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.font-numeric {
+  font-family: "Papirology", "Figtree", ui-sans-serif, sans-serif;
+}
+
+.bg-grain {
+  background-color: var(--ink);
+  background-image: url("/__l5e/assets-v1/edea77a7-ab98-41a3-9981-0d954c592485/cpv-grain.webp");
+  background-position: 50%;
+  background-size: cover;
+}
+
+.bg-stone {
+  background-color: var(--stone);
+}
+
+.bg-stone-line {
+  background-color: var(--stone-line);
+}
+

@@ -1,0 +1,6 @@
+{
+  "name": "Centro de Pensamiento Vida",
+  "description": "Investigación, formación e incidencia para transformar el pensamiento económico y construir alternativas para una vida digna.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
