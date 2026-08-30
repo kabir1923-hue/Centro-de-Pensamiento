@@ -9,12 +9,12 @@ import {
 } from "./Icons";
 
 const SOCIAL_LINKS = [
-  { label: "Instagram", Icon: InstagramIcon, w: "clamp(34px,3.2vw,52px)" },
-  { label: "Facebook", Icon: FacebookIcon, ring: true, w: "clamp(34px,3.2vw,52px)" },
-  { label: "YouTube", Icon: YouTubeIcon, w: "clamp(34px,3.2vw,52px)" },
-  { label: "X", Icon: XIcon, w: "clamp(31px,2.9vw,47px)" },
-  { label: "LinkedIn", Icon: LinkedInIcon, w: "clamp(34px,3.2vw,52px)" },
-  { label: "Spotify", Icon: SpotifyIcon, w: "clamp(34px,3.2vw,52px)" },
+  { label: "Instagram", Icon: InstagramIcon, w: "clamp(24px,2.1vw,36px)" },
+  { label: "Facebook", Icon: FacebookIcon, ring: true, w: "clamp(24px,2.1vw,36px)" },
+  { label: "YouTube", Icon: YouTubeIcon, w: "clamp(24px,2.1vw,36px)" },
+  { label: "X", Icon: XIcon, w: "clamp(22px,1.9vw,32px)" },
+  { label: "LinkedIn", Icon: LinkedInIcon, w: "clamp(24px,2.1vw,36px)" },
+  { label: "Spotify", Icon: SpotifyIcon, w: "clamp(24px,2.1vw,36px)" },
 ];
 
 export function SocialBanner() {
@@ -25,11 +25,11 @@ export function SocialBanner() {
         background: "linear-gradient(var(--stone) 0 50%, var(--ink) 50% 100%)",
       }}
     >
-      <FadeIn className="mx-auto flex max-w-[1050px] flex-col items-center gap-[clamp(12px,1.4vw,22px)] rounded-full bg-brand-yellow px-[4vw] py-[clamp(20px,2.4vw,38px)] text-ink">
-        <div className="text-[clamp(13px,1.1vw,19px)] font-bold tracking-[1.6px] uppercase">
-          Siguenos en:
+      <FadeIn className="mx-auto flex max-w-[1560px] flex-col sm:flex-row items-center justify-between gap-[clamp(10px,2vw,30px)] rounded-full bg-brand-yellow px-[clamp(30px,4vw,80px)] py-[clamp(16px,1.7vw,28px)] text-ink">
+        <div className="text-[clamp(13px,1.25vw,22px)] font-bold tracking-[1.6px] uppercase whitespace-nowrap">
+          Síguenos en:
         </div>
-        <div className="flex flex-wrap items-center justify-center gap-[clamp(14px,2.2vw,38px)]">
+        <div className="flex flex-wrap items-center justify-center gap-[clamp(14px,2.2vw,34px)]">
           {SOCIAL_LINKS.map(({ label, Icon, ring, w }) => (
             <a
               key={label}

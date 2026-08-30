@@ -10,8 +10,21 @@ const STATS: StatItem[] = [
 
 export function Stats() {
   return (
-    <section className="bg-grain pt-[clamp(55px,6.5vw,120px)] pb-[clamp(50px,6vw,110px)]">
-      <div className="mx-auto max-w-[1240px] px-[3.2vw]">
+    <section className="bg-grain relative overflow-hidden bg-ink pt-[clamp(55px,6.5vw,120px)] pb-[clamp(50px,6vw,110px)]">
+      {/* Exact background solar panels image with matching multi-layer ink overlays and ambient gradient as in #opinion */}
+      <div className="absolute inset-0 z-0 select-none pointer-events-none overflow-hidden">
+        <img
+          src="/fondo-banner-01.webp"
+          alt=""
+          className="h-full w-full object-cover object-center scale-105 filter brightness-[0.55] contrast-[1.05]"
+        />
+        {/* Exact ambient radial glow and multi-layered ink overlays */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_40%,rgba(27,49,137,0.4),rgba(0,18,46,0.95))]" />
+        <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/80 to-ink/90" />
+        <div className="absolute inset-0 bg-black/30" />
+      </div>
+
+      <div className="relative z-10 mx-auto max-w-[1240px] px-[3.2vw]">
         <FadeIn
           from="left"
           className="mb-[clamp(34px,3.6vw,64px)] flex items-center gap-[clamp(14px,1.6vw,28px)]"

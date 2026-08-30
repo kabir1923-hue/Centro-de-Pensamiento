@@ -242,25 +242,26 @@ export function Hero() {
               exit="exit"
               className="relative z-10 w-full grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center"
             >
-              {/* Left Column: Text & CTAs */}
-              <div className="lg:col-span-5 xl:col-span-5 flex flex-col justify-center text-left">
-                <div className="mb-3 inline-flex items-center gap-2 font-sans text-xs sm:text-sm font-extrabold uppercase tracking-[2.5px] text-brand-yellow drop-shadow-sm">
+              {/* Left Column: Text & CTAs organized vertically */}
+              <div className="lg:col-span-5 xl:col-span-5 flex flex-col items-start justify-center text-left">
+                <div className="mb-2 inline-flex items-center gap-2 font-sans text-xs sm:text-sm font-extrabold uppercase tracking-[2.5px] text-brand-yellow drop-shadow-sm">
                   <span className="h-2 w-2 rounded-full bg-brand-yellow animate-pulse" />
                   {currentSlide.highlightText}
                 </div>
 
-                <h1 className="mb-4 text-[clamp(30px,3.8vw,56px)] font-black leading-[1.04] tracking-[-0.5px] text-white uppercase text-balance drop-shadow-lg">
+                <h1 className="mb-3 text-[clamp(28px,3.6vw,52px)] font-black leading-[1.05] tracking-[-0.5px] text-white uppercase text-balance drop-shadow-lg">
                   {currentSlide.title}
                 </h1>
 
-                <p className="mb-8 text-[clamp(15px,1.15vw,19px)] font-light leading-[1.8] text-stone-100 max-w-[620px] text-pretty drop-shadow-md">
+                <p className="mb-6 text-[clamp(14px,1.1vw,18px)] font-light leading-[1.75] text-stone-100 max-w-[620px] text-pretty drop-shadow-md">
                   {currentSlide.description}
                 </p>
 
-                <div className="flex flex-wrap items-center gap-4">
+                {/* CTAs stacked vertically */}
+                <div className="flex flex-col items-stretch sm:items-start gap-3 w-full sm:w-auto">
                   <a
                     href={currentSlide.primaryCta.href}
-                    className="inline-flex items-center gap-2.5 rounded-full bg-brand-yellow px-7 py-3.5 text-sm sm:text-base font-extrabold uppercase tracking-wider text-ink transition-all duration-200 hover:bg-white hover:scale-[1.02] shadow-xl shadow-brand-yellow/30 cursor-pointer"
+                    className="inline-flex items-center justify-center gap-2.5 rounded-full bg-brand-yellow px-7 py-3 text-sm sm:text-base font-extrabold uppercase tracking-wider text-ink transition-all duration-200 hover:bg-white hover:scale-[1.02] shadow-xl shadow-brand-yellow/30 cursor-pointer"
                   >
                     {currentSlide.primaryCta.label}
                     <ArrowUpRight className="h-4 w-4 stroke-[2.5]" />
@@ -269,22 +270,24 @@ export function Hero() {
                   {currentSlide.secondaryCta && (
                     <a
                       href={currentSlide.secondaryCta.href}
-                      className="inline-flex items-center gap-2 rounded-full border border-white/40 bg-black/60 backdrop-blur-md px-6 py-3.5 text-sm sm:text-base font-semibold uppercase tracking-wider text-white transition-all duration-200 hover:border-brand-yellow hover:bg-brand-yellow/15 hover:text-brand-yellow cursor-pointer"
+                      className="inline-flex items-center justify-center gap-2 rounded-full border border-white/40 bg-black/60 backdrop-blur-md px-6 py-3 text-sm sm:text-base font-semibold uppercase tracking-wider text-white transition-all duration-200 hover:border-brand-yellow hover:bg-brand-yellow/15 hover:text-brand-yellow cursor-pointer"
                     >
                       {currentSlide.secondaryCta.label}
                     </a>
                   )}
                 </div>
 
-                {/* Institutional branding row for slide 1 */}
+                {/* Institutional branding row organized vertically */}
                 {currentSlide.type === "event_banner" && (
-                  <div className="mt-8 flex flex-wrap items-center gap-4 border-t border-white/15 pt-4 text-[11px] font-medium tracking-widest text-stone-300 uppercase">
-                    <span className="text-brand-yellow font-bold">Convocan:</span>
-                    <span>Cancillería</span>
-                    <span className="text-white/30">•</span>
-                    <span>MinHacienda</span>
-                    <span className="text-white/30">•</span>
-                    <span className="text-white font-bold">Centro de Pensamiento Vida</span>
+                  <div className="mt-6 flex flex-col items-start gap-1.5 border-t border-white/15 pt-4 text-[11px] font-medium tracking-widest text-stone-300 uppercase w-full">
+                    <span className="text-brand-yellow font-bold text-xs">Convocan:</span>
+                    <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-stone-300">
+                      <span>Cancillería</span>
+                      <span className="text-white/30">•</span>
+                      <span>MinHacienda</span>
+                      <span className="text-white/30">•</span>
+                      <span className="text-white font-bold">Centro de Pensamiento Vida</span>
+                    </div>
                   </div>
                 )}
               </div>
@@ -449,47 +452,53 @@ export function Hero() {
                 )}
 
                 {currentSlide.type === "pillars" && (
-                  <div className="w-full max-w-[560px] grid grid-cols-1 sm:grid-cols-3 gap-3.5 py-4">
-                    <div className="rounded-xl border border-brand-yellow/40 bg-white/5 p-4 backdrop-blur-sm transition-all hover:bg-brand-yellow/10">
+                  <div className="w-fit max-w-[290px] flex flex-col gap-4 sm:gap-5 py-2 mx-auto lg:mx-0">
+                    <div className="flex items-center gap-3 rounded-2xl border border-brand-yellow/40 bg-white/5 px-4 py-8 sm:py-10 min-h-[120px] backdrop-blur-sm transition-all hover:bg-brand-yellow/10 shadow-lg">
                       <img
                         src="/__l5e/assets-v1/3030ac57-7802-48e3-9bb6-37c02e33d664/icon-investigacion.webp"
                         alt=""
-                        className="w-10 h-10 mb-3"
+                        className="w-10 h-10 shrink-0"
                       />
-                      <h4 className="text-xs font-black uppercase tracking-wider text-brand-yellow mb-1">
-                        Investigación
-                      </h4>
-                      <p className="text-[11px] font-light text-stone-300 leading-tight">
-                        Conocimiento crítico y riguroso.
-                      </p>
+                      <div className="flex-1">
+                        <h4 className="text-xs sm:text-sm font-black uppercase tracking-wider text-brand-yellow mb-1.5">
+                          Investigación
+                        </h4>
+                        <p className="text-[11px] sm:text-xs font-light text-stone-300 leading-snug">
+                          Conocimiento crítico y riguroso.
+                        </p>
+                      </div>
                     </div>
 
-                    <div className="rounded-xl border border-brand-blue/40 bg-white/5 p-4 backdrop-blur-sm transition-all hover:bg-brand-blue/10">
+                    <div className="flex items-center gap-3 rounded-2xl border border-brand-blue/40 bg-white/5 px-4 py-8 sm:py-10 min-h-[120px] backdrop-blur-sm transition-all hover:bg-brand-blue/10 shadow-lg">
                       <img
                         src="/__l5e/assets-v1/8895a711-b292-4b48-978e-354bb0d9901e/icon-formacion.webp"
                         alt=""
-                        className="w-10 h-10 mb-3"
+                        className="w-10 h-10 shrink-0"
                       />
-                      <h4 className="text-xs font-black uppercase tracking-wider text-brand-blue mb-1">
-                        Formación
-                      </h4>
-                      <p className="text-[11px] font-light text-stone-300 leading-tight">
-                        Capacidades para líderes sociales.
-                      </p>
+                      <div className="flex-1">
+                        <h4 className="text-xs sm:text-sm font-black uppercase tracking-wider text-brand-blue mb-1.5">
+                          Formación
+                        </h4>
+                        <p className="text-[11px] sm:text-xs font-light text-stone-300 leading-snug">
+                          Capacidades para líderes sociales.
+                        </p>
+                      </div>
                     </div>
 
-                    <div className="rounded-xl border border-brand-red/40 bg-white/5 p-4 backdrop-blur-sm transition-all hover:bg-brand-red/10">
+                    <div className="flex items-center gap-3 rounded-2xl border border-brand-red/40 bg-white/5 px-4 py-8 sm:py-10 min-h-[120px] backdrop-blur-sm transition-all hover:bg-brand-red/10 shadow-lg">
                       <img
                         src="/__l5e/assets-v1/ecabd28d-74ce-4f75-b714-2597940d2030/icon-incidencia.webp"
                         alt=""
-                        className="w-10 h-10 mb-3"
+                        className="w-10 h-10 shrink-0"
                       />
-                      <h4 className="text-xs font-black uppercase tracking-wider text-brand-red mb-1">
-                        Incidencia
-                      </h4>
-                      <p className="text-[11px] font-light text-stone-300 leading-tight">
-                        Políticas públicas y justicia social.
-                      </p>
+                      <div className="flex-1">
+                        <h4 className="text-xs sm:text-sm font-black uppercase tracking-wider text-brand-red mb-1.5">
+                          Incidencia
+                        </h4>
+                        <p className="text-[11px] sm:text-xs font-light text-stone-300 leading-snug">
+                          Políticas públicas y justicia social.
+                        </p>
+                      </div>
                     </div>
                   </div>
                 )}
@@ -544,13 +553,6 @@ export function Hero() {
           </div>
         </div>
       </div>
-
-      {/* Hero Strip bottom accent */}
-      <img
-        src="/__l5e/assets-v1/e0f908cb-4b45-4ab5-b7e7-3a3d3f422c7c/hero-strip.webp"
-        alt=""
-        className="relative z-0 mt-4 w-full opacity-80 pointer-events-none"
-      />
     </section>
   );
 }
