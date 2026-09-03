@@ -4,7 +4,7 @@ import type { NavItem } from "../types";
 const NAV_ITEMS: NavItem[] = [
   { label: "Home", href: "#home" },
   { label: "Quiénes somos", href: "#proposito" },
-  { label: "Opinión y analisis", href: "#opinion" },
+  { label: "Publicaciones", href: "#libros" },
   { label: "Noticias y eventos", href: "#noticias" },
   { label: "Hablemos", href: "#hablemos" },
   { label: "Dona aquí", href: "#hablemos" },
@@ -15,7 +15,7 @@ export function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ["home", "proposito", "opinion", "noticias", "hablemos"];
+      const sections = ["home", "proposito", "libros", "opinion", "noticias", "hablemos"];
       const scrollPos = window.scrollY + 180;
 
       for (let i = sections.length - 1; i >= 0; i--) {
@@ -37,37 +37,38 @@ export function Navbar() {
   }, []);
 
   return (
-    <header className="sticky top-0 z-50 flex justify-center bg-gradient-to-b from-ink/90 via-ink/40 to-transparent px-4 pt-[18px] backdrop-blur-[2px]">
+    <header className="sticky top-0 z-50 flex justify-center bg-gradient-to-b from-ink/90 via-ink/40 to-transparent px-4 pt-4 sm:pt-5 backdrop-blur-[2px]">
       <nav
         aria-label="Principal"
-        className="flex max-w-full items-center justify-center gap-5 sm:gap-7 md:gap-9 overflow-x-auto rounded-full border border-brand-yellow/35 bg-[#141414]/90 px-6 sm:px-8 py-3 backdrop-blur-xl shadow-[0_20px_50px_rgba(0,0,0,0.85)] [scrollbar-width:none]"
+        className="flex max-w-full items-center justify-center gap-4 sm:gap-7 md:gap-8 overflow-x-auto rounded-full border border-white/10 bg-[#1e1e1e]/80 px-5 sm:px-8 py-2.5 sm:py-3 backdrop-blur-xl shadow-[0_20px_50px_rgba(0,0,0,0.85)] [scrollbar-width:none]"
       >
-        <a
-          href="#home"
-          className="shrink-0 transition-transform duration-200 hover:scale-105 focus-visible:ring-2 focus-visible:ring-brand-yellow focus-visible:outline-none"
-          aria-label="Inicio Centro de Pensamiento Vida"
-        >
+        {/* Brand Butterfly Icon inside the pill as shown in VENTANA_HOME.svg */}
+        <a href="#home" className="flex items-center shrink-0 pr-1 hover:opacity-85 transition-opacity" aria-label="Centro de Pensamiento Vida">
           <img
-            src="/__l5e/assets-v1/12096966-ce8a-4439-8944-7bb0169fe93f/cpv-logo.webp"
+            src="/LOGO.svg"
             alt="Centro de Pensamiento Vida"
-            className="w-[32px] sm:w-[36px] h-auto drop-shadow-md"
+            className="h-6 sm:h-7 w-auto object-contain"
           />
         </a>
 
-        <ul className="flex items-center justify-center gap-5 sm:gap-7 md:gap-9 text-[13px] sm:text-[14px] font-medium tracking-[1.2px] whitespace-nowrap uppercase">
+        <ul className="flex items-center justify-center gap-4 sm:gap-6 md:gap-7 text-[12px] sm:text-[13px] font-semibold tracking-[1px] whitespace-nowrap uppercase">
           {NAV_ITEMS.map((item) => {
+            const isDona = item.label.toLowerCase().includes("dona");
+            const isHome = item.label.toLowerCase() === "home";
             const isActive =
-              (item.href === "#home" && activeSection === "home") ||
-              (item.href === `#${activeSection}` && item.label !== "Dona aquí");
+              (isHome && activeSection === "home") ||
+              item.href === `#${activeSection}`;
 
             return (
               <li key={item.label}>
                 <a
                   href={item.href}
                   className={`transition-colors duration-200 ${
-                    isActive
-                      ? "border-b-2 border-brand-yellow pb-[4px] text-brand-yellow font-bold"
-                      : "text-stone-200 hover:text-brand-yellow"
+                    isDona
+                      ? "text-brand-yellow font-bold hover:brightness-125"
+                      : isActive || isHome
+                      ? "text-brand-yellow hover:text-brand-yellow"
+                      : "text-stone-300 hover:text-brand-yellow"
                   }`}
                 >
                   {item.label}

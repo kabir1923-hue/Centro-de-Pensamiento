@@ -27,25 +27,14 @@ export function Hablemos() {
     <>
       <section
         id="hablemos"
-        className="bg-grain relative overflow-hidden bg-ink pt-[clamp(30px,3vw,60px)] pb-[clamp(60px,7vw,130px)] text-center"
+        className="bg-grain relative overflow-hidden bg-ink pt-[4vw] pb-[6vw] text-center"
       >
-        {/* Exact background solar panels image with matching multi-layer ink overlays and ambient gradient as in previous sections */}
-        <div className="absolute inset-0 z-0 select-none pointer-events-none overflow-hidden">
-          <img
-            src="/fondo-banner-01.webp"
-            alt=""
-            className="h-full w-full object-cover object-center scale-105 filter brightness-[0.55] contrast-[1.05]"
-          />
-          {/* Exact ambient radial glow and multi-layered ink overlays */}
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_40%,rgba(27,49,137,0.4),rgba(0,18,46,0.95))]" />
-          <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/80 to-ink/90" />
-          <div className="absolute inset-0 bg-black/30" />
-        </div>
+        <div className="absolute inset-0 bg-gradient-to-b from-ink via-[#0d0e12] to-ink opacity-95 pointer-events-none" />
 
-        <div className="relative z-10 mx-auto max-w-[1560px] px-[3.2vw]">
+        <div className="relative z-10 mx-auto max-w-[1440px] px-[3.2vw]">
           <FadeIn
             as="h2"
-            className="mb-[clamp(16px,1.6vw,28px)] text-[clamp(32px,4.4vw,72px)] font-black leading-[1.05] tracking-[0.5px] text-brand-blue uppercase"
+            className="mb-4 text-[clamp(32px,4.2vw,66px)] font-black leading-[1.05] tracking-[0.5px] text-brand-blue uppercase"
           >
             Sé parte del cambio
           </FadeIn>
@@ -53,7 +42,7 @@ export function Hablemos() {
           <FadeIn
             as="p"
             delay={110}
-            className="mx-auto mb-[clamp(28px,3vw,52px)] max-w-[660px] text-[clamp(14px,1.1vw,19px)] font-light leading-[1.75] text-soft-dim text-pretty"
+            className="mx-auto mb-10 max-w-[660px] text-[clamp(14px,1.05vw,17px)] font-light leading-[1.8] text-stone-300 text-pretty"
           >
             Únete a nuestra red de pensamiento y acción. Juntos construimos alternativas para una
             vida digna y justa.
@@ -61,20 +50,13 @@ export function Hablemos() {
 
           <FadeIn delay={220}>
             <div className="inline-flex flex-wrap items-center justify-center gap-4">
-              <a
-                href="mailto:contacto@centrodepensamientovida.org"
-                className="inline-flex items-center gap-4 rounded-full bg-ink-soft px-[clamp(30px,3vw,54px)] py-[clamp(13px,1.3vw,22px)] text-[clamp(14px,1.25vw,22px)] font-semibold tracking-[1.2px] text-white uppercase transition-opacity duration-200 hover:opacity-85 shadow-lg border border-white/10"
-              >
-                <MailIcon className="h-auto w-[1.5em] text-brand-yellow" />
-                Hablemos
-              </a>
-
               <button
                 type="button"
                 onClick={() => setShowContactForm(true)}
-                className="inline-flex items-center gap-2 rounded-full border border-brand-yellow/40 bg-transparent px-[clamp(24px,2.5vw,40px)] py-[clamp(13px,1.3vw,22px)] text-[clamp(13px,1.1vw,18px)] font-semibold tracking-[1.2px] text-brand-yellow uppercase transition duration-200 hover:bg-brand-yellow hover:text-ink cursor-pointer"
+                className="inline-flex items-center gap-3.5 rounded-full bg-white px-9 sm:px-12 py-3.5 sm:py-4 text-[13px] sm:text-[14px] font-black tracking-[1.4px] text-ink uppercase transition-all duration-200 hover:bg-brand-yellow hover:scale-[1.02] shadow-2xl cursor-pointer"
               >
-                Escríbenos directamente
+                <MailIcon className="h-5 w-5 text-brand-red shrink-0" />
+                <span>Conversemos</span>
               </button>
             </div>
           </FadeIn>

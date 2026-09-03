@@ -32,41 +32,40 @@ export function Libros() {
   return (
     <section
       id="libros"
-      className="pb-[4vw]"
-      style={{
-        background: "linear-gradient(var(--ink) 0 42%, var(--stone) 42% 100%)",
-      }}
+      className="bg-grain relative overflow-hidden bg-ink pt-[2vw] pb-[6vw]"
     >
-      <div className="relative flex items-center justify-center px-[3.2vw]">
-        <div className="absolute inset-x-0 h-px bg-brand-red" />
-        <FadeIn className="relative rounded-full bg-brand-red px-11 py-[11px] text-[clamp(13px,1.05vw,18px)] font-light tracking-[1.4px] text-white uppercase">
-          Publicaciones
-        </FadeIn>
-      </div>
+      <div className="absolute inset-0 bg-gradient-to-b from-ink via-[#0d0e12] to-ink opacity-95 pointer-events-none" />
 
-      <div className="mx-auto grid max-w-[1560px] grid-cols-[repeat(auto-fit,minmax(min(230px,100%),1fr))] gap-[clamp(24px,4vw,70px)] px-[3.2vw] pt-[clamp(40px,5vw,90px)]">
-        {BOOKS.map((book) => (
-          <FadeIn as="article" key={book.title} from={book.from} delay={book.delay}>
-            <img
-              src={book.src}
-              alt={book.title}
-              loading="lazy"
-              className="aspect-[54/70] w-full object-cover shadow-[0_22px_40px_-20px_rgba(0,0,0,0.5)]"
-            />
-            <div className="mt-[22px] mb-1.5 text-[clamp(12px,1vw,17px)] font-light tracking-[0.8px] text-ink-soft uppercase">
-              {book.kind}
-            </div>
-            <div className="text-[clamp(13px,1.05vw,18px)] font-bold leading-[1.4] tracking-[0.4px] text-ink uppercase">
-              {book.title}
-              {book.extra && (
-                <>
-                  <br />
-                  {book.extra}
-                </>
-              )}
-            </div>
+      <div className="relative z-10">
+        {/* Clean Red Badge as shown in VENTANA_HOME.svg */}
+        <div className="flex justify-center px-[3.2vw] mb-2">
+          <FadeIn className="inline-block bg-[#7A1118] px-10 py-2.5 text-[clamp(12px,1vw,16px)] font-bold tracking-[2px] text-white uppercase shadow-lg">
+            Ediciones Digitales
           </FadeIn>
-        ))}
+        </div>
+
+        <div className="mx-auto grid max-w-[1340px] grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-14 px-[3.2vw] pt-12">
+          {BOOKS.map((book) => (
+            <FadeIn as="article" key={book.title} from={book.from} delay={book.delay} className="flex flex-col items-center text-center">
+              <div className="group relative overflow-hidden rounded-md shadow-[0_20px_45px_-10px_rgba(0,0,0,0.85)] transition-transform duration-300 hover:scale-[1.03]">
+                <img
+                  src={book.src}
+                  alt={book.title}
+                  loading="lazy"
+                  className="aspect-[54/70] w-full max-w-[330px] object-cover"
+                />
+              </div>
+              <div className="mt-4 sm:mt-5 text-[11px] sm:text-[13px] font-bold leading-[1.35] tracking-[0.5px] text-white uppercase max-w-[300px]">
+                {book.title}
+                {book.extra && (
+                  <span className="block mt-0.5 font-bold text-white">
+                    {book.extra}
+                  </span>
+                )}
+              </div>
+            </FadeIn>
+          ))}
+        </div>
       </div>
     </section>
   );

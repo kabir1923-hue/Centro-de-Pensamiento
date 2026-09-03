@@ -12,7 +12,6 @@ const SLIDES: HeroSlide[] = [
     description:
       "Un encuentro histórico que reúne a economistas, investigadoras, líderes sociales y tomadores de decisión para debatir alternativas estructurales frente al modelo neoliberal y trazar la ruta hacia la justicia social.",
     primaryCta: { label: "Conoce el Propósito", href: "#proposito" },
-    secondaryCta: { label: "Ver Publicaciones", href: "#libros" },
     type: "event_banner",
   },
   {
@@ -23,7 +22,6 @@ const SLIDES: HeroSlide[] = [
     description:
       "Generamos conocimiento crítico y propuestas económicas situadas para la vida digna, la justicia social y el bienestar colectivo en América Latina.",
     primaryCta: { label: "Nuestra Visión", href: "#proposito" },
-    secondaryCta: { label: "Ver Publicaciones", href: "#libros" },
     type: "artwork",
   },
   {
@@ -186,52 +184,30 @@ export function Hero() {
       </div>
 
       <div className="relative z-10 mx-auto w-full max-w-[1560px] px-[3.2vw] flex-1 flex flex-col justify-center">
-        {/* Top Header Badge & Slide Counter */}
-        <div className="mb-6 flex flex-wrap items-center justify-between gap-4 border-b border-white/10 pb-4">
-          <div className="flex items-center gap-3">
-            <span className="inline-flex items-center gap-1.5 rounded-full border border-brand-yellow/30 bg-brand-yellow/10 px-3.5 py-1 text-xs font-semibold uppercase tracking-wider text-brand-yellow">
-              <Sparkles className="h-3.5 w-3.5" />
-              {currentSlide.badge}
-            </span>
-            <span className="hidden sm:inline-block text-xs font-light tracking-widest text-stone-400 uppercase">
-              • Centro de Pensamiento Vida
-            </span>
+        {/* Top Header Eyebrow & Slide Counter */}
+        <div className="mb-6 flex flex-wrap items-center justify-between gap-4">
+          <div className="flex items-center gap-2 text-xs sm:text-sm font-bold uppercase tracking-[2px] text-brand-yellow">
+            <span className="h-2 w-2 rounded-full bg-brand-yellow shrink-0" />
+            <span>{currentSlide.highlightText || currentSlide.badge}</span>
           </div>
 
           <div className="flex items-center gap-3">
-            <div className="font-numeric text-lg sm:text-xl font-bold tracking-widest text-brand-yellow">
-              0{currentIndex + 1} <span className="text-white/40 text-sm font-normal">/ 0{SLIDES.length}</span>
+            <div className="font-numeric text-base sm:text-lg font-bold tracking-widest text-white">
+              0{currentIndex + 1} <span className="text-white/50 text-sm font-normal">/ 0{SLIDES.length}</span>
             </div>
             <button
               onClick={() => setIsPlaying(!isPlaying)}
-              className="flex h-8 w-8 items-center justify-center rounded-full border border-white/20 bg-white/5 text-stone-300 transition-colors hover:border-brand-yellow hover:text-brand-yellow cursor-pointer"
+              className="flex h-7 w-7 items-center justify-center rounded-full border border-white/20 bg-white/5 text-stone-300 transition-colors hover:border-brand-yellow hover:text-brand-yellow cursor-pointer"
               title={isPlaying ? "Pausar carrusel" : "Reproducir carrusel"}
               aria-label={isPlaying ? "Pausar carrusel" : "Reproducir carrusel"}
             >
-              {isPlaying ? <Pause className="h-3.5 w-3.5" /> : <Play className="h-3.5 w-3.5 ml-0.5" />}
+              {isPlaying ? <Pause className="h-3 w-3" /> : <Play className="h-3 w-3 ml-0.5" />}
             </button>
           </div>
         </div>
 
         {/* Dynamic Slide Content */}
-        <div className="relative min-h-[520px] sm:min-h-[580px] lg:min-h-[640px] flex items-center overflow-hidden rounded-3xl border border-white/15 bg-black/40 backdrop-blur-md p-6 sm:p-9 lg:p-12 shadow-2xl">
-          {/* Background image behind text specifically for the first slide (Economía Para La Vida) */}
-          <div
-            className={`absolute inset-0 z-0 transition-opacity duration-700 pointer-events-none ${
-              currentSlide.type === "event_banner" ? "opacity-100" : "opacity-0"
-            }`}
-          >
-            <img
-              src="/FONDO_BANNER_01.png"
-              alt="Conferencia Economía Para La Vida - Escenario Principal"
-              className="h-full w-full object-cover object-center scale-100 filter brightness-[0.78] contrast-[1.12]"
-            />
-            {/* Cinematic dark scrims to ensure 100% crystal-clear text readability */}
-            <div className="absolute inset-0 bg-gradient-to-r from-ink/95 via-ink/85 to-ink/45" />
-            <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-transparent to-ink/65" />
-            <div className="absolute inset-0 bg-black/30" />
-          </div>
-
+        <div className="relative min-h-[480px] sm:min-h-[520px] lg:min-h-[580px] flex items-center">
           <AnimatePresence initial={false} custom={direction} mode="wait">
             <motion.div
               key={currentSlide.id}
@@ -240,76 +216,60 @@ export function Hero() {
               initial="enter"
               animate="center"
               exit="exit"
-              className="relative z-10 w-full grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center"
+              className="relative z-10 w-full grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center"
             >
-              {/* Left Column: Text & CTAs organized vertically */}
-              <div className="lg:col-span-5 xl:col-span-5 flex flex-col items-start justify-center text-left">
-                <div className="mb-2 inline-flex items-center gap-2 font-sans text-xs sm:text-sm font-extrabold uppercase tracking-[2.5px] text-brand-yellow drop-shadow-sm">
-                  <span className="h-2 w-2 rounded-full bg-brand-yellow animate-pulse" />
-                  {currentSlide.highlightText}
-                </div>
-
-                <h1 className="mb-3 text-[clamp(28px,3.6vw,52px)] font-black leading-[1.05] tracking-[-0.5px] text-white uppercase text-balance drop-shadow-lg">
-                  {currentSlide.title}
+              {/* Left Column: Text & CTAs */}
+              <div className="lg:col-span-6 xl:col-span-5 flex flex-col items-start justify-center text-left">
+                <h1 className="mb-4 text-[clamp(34px,4.5vw,68px)] font-black leading-[1.02] tracking-[-0.5px] text-white uppercase text-balance">
+                  {currentSlide.id === "slide-evento" ? (
+                    <>
+                      Economía
+                      <br />
+                      Para La Vida
+                    </>
+                  ) : (
+                    currentSlide.title
+                  )}
                 </h1>
 
-                <p className="mb-6 text-[clamp(14px,1.1vw,18px)] font-light leading-[1.75] text-stone-100 max-w-[620px] text-pretty drop-shadow-md">
+                <p className="mb-8 text-[clamp(14px,1.15vw,19px)] font-light leading-[1.8] text-stone-200 max-w-[620px] text-pretty">
                   {currentSlide.description}
                 </p>
 
-                {/* CTAs stacked vertically */}
-                <div className="flex flex-col items-stretch sm:items-start gap-3 w-full sm:w-auto">
+                {/* Primary CTA button styled like Figma */}
+                <div className="flex flex-wrap items-center gap-4">
                   <a
                     href={currentSlide.primaryCta.href}
-                    className="inline-flex items-center justify-center gap-2.5 rounded-full bg-brand-yellow px-7 py-3 text-sm sm:text-base font-extrabold uppercase tracking-wider text-ink transition-all duration-200 hover:bg-white hover:scale-[1.02] shadow-xl shadow-brand-yellow/30 cursor-pointer"
+                    className="inline-flex items-center justify-center gap-2.5 rounded-full bg-brand-yellow px-8 py-3.5 text-sm sm:text-base font-bold uppercase tracking-wider text-ink transition-all duration-200 hover:bg-white hover:scale-[1.02] shadow-xl shadow-brand-yellow/20 cursor-pointer"
                   >
-                    {currentSlide.primaryCta.label}
-                    <ArrowUpRight className="h-4 w-4 stroke-[2.5]" />
+                    "{currentSlide.primaryCta.label}"
                   </a>
 
                   {currentSlide.secondaryCta && (
                     <a
                       href={currentSlide.secondaryCta.href}
-                      className="inline-flex items-center justify-center gap-2 rounded-full border border-white/40 bg-black/60 backdrop-blur-md px-6 py-3 text-sm sm:text-base font-semibold uppercase tracking-wider text-white transition-all duration-200 hover:border-brand-yellow hover:bg-brand-yellow/15 hover:text-brand-yellow cursor-pointer"
+                      className="inline-flex items-center justify-center gap-2 rounded-full border border-white/30 bg-black/40 px-6 py-3.5 text-sm sm:text-base font-medium uppercase tracking-wider text-white transition-all duration-200 hover:border-brand-yellow hover:text-brand-yellow cursor-pointer"
                     >
                       {currentSlide.secondaryCta.label}
                     </a>
                   )}
                 </div>
-
-                {/* Institutional branding row organized vertically */}
-                {currentSlide.type === "event_banner" && (
-                  <div className="mt-6 flex flex-col items-start gap-1.5 border-t border-white/15 pt-4 text-[11px] font-medium tracking-widest text-stone-300 uppercase w-full">
-                    <span className="text-brand-yellow font-bold text-xs">Convocan:</span>
-                    <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-stone-300">
-                      <span>Cancillería</span>
-                      <span className="text-white/30">•</span>
-                      <span>MinHacienda</span>
-                      <span className="text-white/30">•</span>
-                      <span className="text-white font-bold">Centro de Pensamiento Vida</span>
-                    </div>
-                  </div>
-                )}
               </div>
 
-              {/* Right Column: Visual Artwork / Showcase depending on slide type */}
-              <div className="lg:col-span-7 xl:col-span-7 flex items-center justify-center">
+              {/* Right Column: Visual Showcase depending on slide type */}
+              <div className="lg:col-span-6 xl:col-span-7 flex items-center justify-center">
                 {currentSlide.type === "event_banner" && (
-                  <div className="relative w-full max-w-[720px] mx-auto group">
-                    {/* Decorative ambient glow */}
-                    <div className="absolute -inset-1.5 rounded-2xl bg-gradient-to-r from-brand-yellow/40 via-brand-red/30 to-brand-blue/40 opacity-75 blur-xl transition duration-500 group-hover:opacity-100" />
-
-                    {/* Image Container */}
-                    <div className="relative overflow-hidden rounded-2xl border-2 border-brand-yellow/50 bg-ink shadow-[0_30px_70px_-15px_rgba(0,0,0,0.95)] transition-all duration-300 group-hover:border-brand-yellow">
+                  <div className="relative w-full max-w-[680px] mx-auto">
+                    {/* Yellow border card as shown in Figma */}
+                    <div className="relative overflow-hidden rounded-2xl border-2 border-brand-yellow bg-ink shadow-[0_20px_50px_rgba(0,0,0,0.85)]">
                       <img
                         src="/FONDO_BANNER_01.png"
-                        alt="Conferencia Economía Para La Vida - Delegados y Expositores"
-                        className="w-full h-auto aspect-[16/9.5] object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                        alt="Conferencia Economía Para La Vida"
+                        className="w-full h-auto aspect-[16/10] object-cover"
                       />
                     </div>
                   </div>
                 )}
-
                 {currentSlide.type === "artwork" && (
                   <div className="relative w-full max-w-[560px] aspect-[926/938] mx-auto">
                     {/* Background circle */}
@@ -352,7 +312,7 @@ export function Hero() {
                     <img
                       src="/__l5e/assets-v1/092553cb-b990-405d-ab36-99e31836d859/hero-bottom.webp"
                       alt=""
-                      className="absolute top-[80.5%] left-[30%] z-5 w-[38.5%]"
+                      className="absolute top-[74%] left-[30%] z-5 w-[38.5%]"
                     />
                     {/* Brand badge */}
                     <div className="absolute top-[8%] left-0 z-10 flex items-center gap-3 rounded-xl bg-ink/70 px-3.5 py-2 backdrop-blur-md border border-white/10">
@@ -508,9 +468,9 @@ export function Hero() {
         </div>
 
         {/* Bottom Carousel Controls & Indicators */}
-        <div className="mt-8 flex flex-wrap items-center justify-between gap-4 border-t border-white/10 pt-5">
-          {/* Navigation Dots / Progress Bars */}
-          <div className="flex items-center gap-2.5">
+        <div className="mt-8 flex flex-wrap items-center justify-between gap-4 pt-4">
+          {/* Navigation Dots / Progress Bars styled as in Figma */}
+          <div className="flex items-center gap-2">
             {SLIDES.map((slide, idx) => {
               const isActive = idx === currentIndex;
               return (
@@ -518,13 +478,13 @@ export function Hero() {
                   key={slide.id}
                   onClick={() => goToSlide(idx)}
                   className={`group relative h-2.5 rounded-full transition-all duration-300 overflow-hidden cursor-pointer ${
-                    isActive ? "w-16 bg-white/20" : "w-6 bg-white/20 hover:bg-white/40"
+                    isActive ? "w-10 bg-brand-yellow" : "w-2.5 bg-white/30 hover:bg-white/60"
                   }`}
                   aria-label={`Ir al slide ${idx + 1}: ${slide.title}`}
                 >
                   {isActive && (
                     <div
-                      className="absolute inset-y-0 left-0 bg-brand-yellow rounded-full transition-all"
+                      className="absolute inset-y-0 left-0 bg-white/40 rounded-full transition-all"
                       style={{ width: `${progress}%` }}
                     />
                   )}
@@ -537,18 +497,18 @@ export function Hero() {
           <div className="flex items-center gap-2">
             <button
               onClick={() => paginate(-1)}
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-white/5 text-white transition-all duration-200 hover:border-brand-yellow hover:bg-brand-yellow hover:text-ink cursor-pointer"
+              className="flex h-9 w-9 items-center justify-center rounded-full border border-white/20 bg-black/40 text-white transition-all duration-200 hover:border-brand-yellow hover:bg-brand-yellow hover:text-ink cursor-pointer"
               aria-label="Slide anterior"
             >
-              <ChevronLeft className="h-5 w-5" />
+              <ChevronLeft className="h-4 w-4" />
             </button>
 
             <button
               onClick={() => paginate(1)}
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-white/5 text-white transition-all duration-200 hover:border-brand-yellow hover:bg-brand-yellow hover:text-ink cursor-pointer"
+              className="flex h-9 w-9 items-center justify-center rounded-full border border-white/20 bg-black/40 text-white transition-all duration-200 hover:border-brand-yellow hover:bg-brand-yellow hover:text-ink cursor-pointer"
               aria-label="Slide siguiente"
             >
-              <ChevronRight className="h-5 w-5" />
+              <ChevronRight className="h-4 w-4" />
             </button>
           </div>
         </div>

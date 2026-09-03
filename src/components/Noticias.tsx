@@ -10,12 +10,14 @@ export function Noticias() {
     <>
       <section
         id="noticias"
-        className="bg-stone pt-[clamp(50px,5.5vw,100px)] pb-[clamp(40px,4vw,70px)] text-ink"
+        className="bg-grain relative overflow-hidden bg-ink pt-[5vw] pb-[5vw] text-white"
       >
-        <div className="mx-auto grid max-w-[1560px] grid-cols-[repeat(auto-fit,minmax(min(340px,100%),1fr))] items-start gap-[clamp(30px,3.4vw,64px)] px-[3.2vw]">
-          <FadeIn from="left">
+        <div className="absolute inset-0 bg-gradient-to-b from-ink via-[#0d0e12] to-ink opacity-95 pointer-events-none" />
+
+        <div className="relative z-10 mx-auto grid max-w-[1440px] grid-cols-1 lg:grid-cols-12 items-center gap-10 lg:gap-14 px-[3.2vw]">
+          <FadeIn from="left" className="lg:col-span-6">
             <div
-              className="group relative cursor-pointer overflow-hidden rounded-lg shadow-lg"
+              className="group relative cursor-pointer overflow-hidden rounded-xl border border-white/15 shadow-2xl"
               onClick={() => setIsVideoOpen(true)}
               role="button"
               tabIndex={0}
@@ -30,7 +32,7 @@ export function Noticias() {
                 loading="lazy"
                 className="aspect-[16/9.4] w-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
               />
-              <div className="absolute inset-0 flex items-center justify-center bg-black/20 opacity-0 transition-opacity duration-200 group-hover:opacity-100">
+              <div className="absolute inset-0 flex items-center justify-center bg-black/25 transition-opacity duration-200 group-hover:bg-black/40">
                 <div className="flex h-16 w-16 items-center justify-center rounded-full bg-brand-red text-white shadow-xl transition-transform duration-200 group-hover:scale-110">
                   <Play className="ml-1 h-8 w-8 fill-current" />
                 </div>
@@ -38,31 +40,33 @@ export function Noticias() {
             </div>
           </FadeIn>
 
-          <FadeIn from="right" delay={140}>
-            <div className="flex items-center gap-3.5 text-[clamp(15px,1.3vw,24px)] font-light tracking-[1.2px] uppercase">
+          <FadeIn from="right" delay={140} className="lg:col-span-6">
+            <div className="flex items-center gap-3 text-[14px] sm:text-[16px] font-medium tracking-[1.4px] uppercase text-white">
               <span>Disponible en</span>
               <a
                 href="https://www.youtube.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-[1em] font-extrabold tracking-normal normal-case hover:opacity-80 transition-opacity"
+                className="inline-flex items-center gap-2 font-black tracking-normal text-white hover:opacity-85 transition-opacity"
               >
-                <YouTubeIcon className="h-auto w-[1.55em] text-brand-red" />
-                YouTube
+                <span className="flex h-5 w-7 items-center justify-center rounded bg-brand-red text-white">
+                  <Play className="h-3 w-3 fill-current ml-0.5" />
+                </span>
+                <span className="font-bold text-lg leading-none">YouTube</span>
               </a>
             </div>
 
-            <div className="my-[clamp(18px,1.8vw,30px)] mb-[clamp(24px,2.4vw,42px)] h-px bg-[oklch(0.693_0.003_84.6)]" />
+            <div className="my-5 h-px bg-white/20" />
 
-            <h3 className="mb-2 text-[clamp(17px,1.5vw,27px)] font-bold leading-[1.25] tracking-[0.3px] uppercase">
+            <h3 className="mb-2 text-[clamp(20px,1.8vw,30px)] font-black leading-[1.2] tracking-[0.3px] uppercase text-white">
               ¿Se acabó el neoliberalismo?
             </h3>
 
-            <div className="mb-[clamp(18px,1.8vw,30px)] text-[clamp(13px,1.1vw,19px)] font-bold tracking-[0.3px] uppercase">
+            <div className="mb-4 text-[clamp(13px,1.1vw,16px)] font-bold tracking-[0.4px] uppercase text-white">
               Simón Gómez entrevista al expresidente Ernesto Samper.
             </div>
 
-            <p className="text-[clamp(14px,1.12vw,19px)] font-light leading-[1.85] text-stone-ink text-pretty">
+            <p className="text-[clamp(14px,1.05vw,17px)] font-light leading-[1.8] text-stone-300 text-pretty">
               En esta entrevista, Simón Gómez director del Centro de Pensamiento Vida, conversa con el
               expresidente Ernesto Samper sobre el agotamiento del modelo neoliberal, la propuesta
               de un modelo solidario de desarrollo para América Latina, y el papel estratégico de

@@ -9,40 +9,38 @@ import {
 } from "./Icons";
 
 const SOCIAL_LINKS = [
-  { label: "Instagram", Icon: InstagramIcon, w: "clamp(24px,2.1vw,36px)" },
-  { label: "Facebook", Icon: FacebookIcon, ring: true, w: "clamp(24px,2.1vw,36px)" },
-  { label: "YouTube", Icon: YouTubeIcon, w: "clamp(24px,2.1vw,36px)" },
-  { label: "X", Icon: XIcon, w: "clamp(22px,1.9vw,32px)" },
-  { label: "LinkedIn", Icon: LinkedInIcon, w: "clamp(24px,2.1vw,36px)" },
-  { label: "Spotify", Icon: SpotifyIcon, w: "clamp(24px,2.1vw,36px)" },
+  { label: "Instagram", Icon: InstagramIcon, iconClass: "w-4 h-4 text-white" },
+  { label: "Facebook", Icon: FacebookIcon, iconClass: "w-4 h-4 text-white", ring: false },
+  { label: "YouTube", Icon: YouTubeIcon, iconClass: "w-4 h-4 text-white" },
+  { label: "X", Icon: XIcon, iconClass: "w-3.5 h-3.5 text-white" },
+  { label: "LinkedIn", Icon: LinkedInIcon, iconClass: "w-3.5 h-3.5 text-white" },
+  { label: "Spotify", Icon: SpotifyIcon, iconClass: "w-4 h-4 text-white" },
 ];
 
 export function SocialBanner() {
   return (
-    <section
-      className="px-[3.2vw]"
-      style={{
-        background: "linear-gradient(var(--stone) 0 50%, var(--ink) 50% 100%)",
-      }}
-    >
-      <FadeIn className="mx-auto flex max-w-[1560px] flex-col sm:flex-row items-center justify-between gap-[clamp(10px,2vw,30px)] rounded-full bg-brand-yellow px-[clamp(30px,4vw,80px)] py-[clamp(16px,1.7vw,28px)] text-ink">
-        <div className="text-[clamp(13px,1.25vw,22px)] font-bold tracking-[1.6px] uppercase whitespace-nowrap">
-          Síguenos en:
-        </div>
-        <div className="flex flex-wrap items-center justify-center gap-[clamp(14px,2.2vw,34px)]">
-          {SOCIAL_LINKS.map(({ label, Icon, ring, w }) => (
-            <a
-              key={label}
-              href="#hablemos"
-              aria-label={label}
-              style={{ width: w }}
-              className="block transition-opacity duration-200 hover:opacity-70 focus-visible:ring-2 focus-visible:ring-ink focus-visible:outline-none"
-            >
-              <Icon ring={ring} className="block h-auto w-full" />
-            </a>
-          ))}
-        </div>
-      </FadeIn>
+    <section className="bg-grain relative overflow-hidden bg-ink py-6 px-[3.2vw]">
+      <div className="absolute inset-0 bg-gradient-to-b from-ink via-[#0d0e12] to-ink opacity-95 pointer-events-none" />
+
+      <div className="relative z-10 flex justify-center">
+        <FadeIn className="inline-flex flex-wrap items-center justify-center gap-3 sm:gap-4 rounded-full bg-brand-yellow px-8 sm:px-12 py-3 text-ink shadow-2xl">
+          <span className="text-[12px] sm:text-[14px] font-black tracking-[1.4px] uppercase whitespace-nowrap mr-1 sm:mr-2">
+            Síguenos en:
+          </span>
+          <div className="flex items-center gap-2 sm:gap-3">
+            {SOCIAL_LINKS.map(({ label, Icon, ring, iconClass }) => (
+              <a
+                key={label}
+                href="#hablemos"
+                aria-label={label}
+                className="flex h-7 w-7 sm:h-8 sm:w-8 items-center justify-center rounded-full bg-black text-white transition-transform duration-200 hover:scale-110 focus-visible:ring-2 focus-visible:ring-ink focus-visible:outline-none"
+              >
+                <Icon ring={ring} className={iconClass} />
+              </a>
+            ))}
+          </div>
+        </FadeIn>
+      </div>
     </section>
   );
 }
